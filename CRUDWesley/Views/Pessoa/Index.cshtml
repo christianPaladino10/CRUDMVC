@@ -1,0 +1,57 @@
+﻿
+@model CRUDWesley.Models.Pessoa 
+
+@*declaração de que essa View PERTENCE a este Model*@
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@*<form action="/" method="post"></form>*@
+@using (Html.BeginForm("Index", "Pessoa", FormMethod.Post)) //Action - Controller
+{
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>Dados da Pessoa</legend>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Nome)
+        </div>
+        <div class="editor-label">
+            @Html.EditorFor(model => model.Nome) @*<input type="text" id"" name="name" value=" " />*@
+            @Html.ValidationMessageFor(model => model.Nome)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Endereco)
+        </div>
+        <div class="editor-label">
+            @Html.EditorFor(model => model.Endereco)
+            @Html.ValidationMessageFor(model => model.Endereco)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Email)
+        </div>
+        <div class="editor-label">
+            @Html.EditorFor(model => model.Email)
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+
+        <p>
+            <input type="submit"  value="Cadastrar" />
+        </p>
+    </fieldset>
+}
+
+@Html.ActionLink("Ver Todas", "Listados")
+
+@section Scripts{
+    @Scripts.Render("~/budles/jqueryval") 
+} 
+
+@*<script type="text/javascript">
+    </script>*@
+
+

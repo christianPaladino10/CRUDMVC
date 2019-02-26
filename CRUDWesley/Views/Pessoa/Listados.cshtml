@@ -1,0 +1,47 @@
+﻿@model IEnumerable<CRUDWesley.Models.Pessoa>
+@{
+    ViewBag.Title = "Listar";
+}
+
+<style>
+    table {
+        font-family: arial, sans-serif;
+        border-collapse: collapse;
+        width: 100%;
+    }
+
+    td, th {
+        border: 1px solid #dddddd;
+        text-align: left;
+        padding: 8px;
+    }
+
+    tr:nth-child(even) {
+        background-color: #dddddd;
+    }
+</style>
+
+<h2>Listar</h2>
+
+<div>
+    <table>
+        <tr>
+            <th>Nome</th>
+            <th>Endereço</th>
+            <th>E-mail</th>
+            <th colspan="2">Ações</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(model => item.Nome)</td>
+                <td>@Html.DisplayFor(model => item.Endereco)</td>
+                <td>@Html.DisplayFor(model => item.Email)</td>
+                <td>@Html.ActionLink("Alterar", "AlterarPessoa", new { id = item.Codigo }) </td>
+                <td>@Html.ActionLink("Excluir", "ExcluirPessoa", new { id = item.Codigo }, new { onclick = "return confirm('Tem certeza que deseja excluir ?')" })</td>
+            </tr>
+        }
+       
+    </table>
+    @Html.ActionLink("Home", "Index")
+</div>

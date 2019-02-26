@@ -1,0 +1,43 @@
+﻿@model CRUDWesley.Models.Pessoa
+@{
+    ViewBag.Title = "AlterarPessoa";
+}
+
+<h2>AlterarPessoa</h2>
+
+@using (Html.BeginForm("EditarPessoa", "Pessoa", FormMethod.Post)) //Action - Controller
+{
+    @Html.ValidationSummary(true)
+    @Html.HiddenFor(model => model.Codigo)
+    
+    <fieldset>
+        <legend>Dados da Pessoa</legend>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Nome)
+        </div>
+        <div class="editor-label">
+            @Html.EditorFor(model => model.Nome) @*<input type="text" id"" name="name" value=" " />*@
+            @Html.ValidationMessageFor(model => model.Nome)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Endereco)
+        </div>
+        <div class="editor-label">
+            @Html.EditorFor(model => model.Endereco)
+            @Html.ValidationMessageFor(model => model.Endereco)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Email)
+        </div>
+        <div class="editor-label">
+            @Html.EditorFor(model => model.Email)
+            @Html.ValidationMessageFor(model => model.Email)
+        </div>
+
+        <p>
+            <input type="submit" value="Atualizar" />
+        </p>
+    </fieldset>
+}
